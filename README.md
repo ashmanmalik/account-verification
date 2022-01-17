@@ -11,18 +11,22 @@ This application takes a user through the account verification process using the
 
 ## Getting started
 
-### 1. Clone the repository
+### 1. Use the template to create your own repository
 
-To get started, you will first need to clone the repository and `cd` into your new directory.
+To get started, you will need click the "Use this template" button on the main page of the repo - this will generate a new repository.
+
+![template repository screenshot](docs/Group_2681.png)
+
+Then you will need to clone the repository you have just generated. 
 
 ```sh
-git clone git@github.com:basiqio/account-verification.git
+git clone git@github.com:<your_username>/account-verification.git
 cd account-verification
 ```
 
 ### 2. API key setup
 
-You will need to [Sign-up](https://dashboard.basiq.io/login) to the Basiq API service and grab your API key for your application (via the [Developer Dashboard](https://dashboard.basiq.io/)).
+If you haven't already, [Sign-up](https://dashboard.basiq.io/login) to the Basiq API service and grab your API key for your application (via the [Developer Dashboard](https://dashboard.basiq.io/)).
 
 Once you have a Basiq API key, move the sample `.env.sample` file to `.env.local` and paste in your Basiq API key next to `BASIQ_API_KEY=`
 
