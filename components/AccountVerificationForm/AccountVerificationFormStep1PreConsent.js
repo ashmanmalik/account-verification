@@ -36,7 +36,7 @@ export function AccountVerificationFormStep1PreConsent() {
           It's important to communicate the value exchange, i.e. what will the product be able to do once 
           the user has connected their bank. */}
           <StepDescription>
-            We need to verify the details of the account from which to to deduct the nominated regular fee.
+            We need to verify the details of the account from which to to track your spending.
           </StepDescription>
         </div>
 
