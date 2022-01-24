@@ -59,8 +59,7 @@ export function AccountVerificationFormStep4SelectAccount() {
           {/* PRODUCT-COPY: Depending on what account features your product supports. */}
           {(loading || !errorOrNoData) && (
             <StepDescription>
-              Please select an account that allows direct debits. Many banks only allow withdrawals from transaction
-              accounts.
+              Please select which account to track - this app typically works best if you use your daily spending. 
             </StepDescription>
           )}
         </div>
@@ -87,40 +86,16 @@ export function AccountVerificationFormStep4SelectAccount() {
                     <RadioGroup.Option
                       key={idx}
                       value={acc}
-                      disabled={acc.disabled}
-                      className={`rounded-lg outline-none ${
-                        !acc.disabled &&
-                        'focus:border-primary-bold focus:ring-2 focus:ring-primary-bold focus:ring-opacity-30 ring-offset-1 ring-offset-transparent'
-                      }`}
+                      className={`rounded-lg outline-none focus:border-primary-bold focus:ring-2 focus:ring-primary-bold focus:ring-opacity-30 ring-offset-1 ring-offset-transparent`}
                       data-cy={`account-${acc.accountNo}`}
                     >
                       {({ checked }) => (
                         <div
-                          className={`relative rounded-lg p-3 flex  ${
-                            acc.disabled
-                              ? 'bg-neutral-subtle-darker cursor-not-allowed opacity-50'
-                              : 'bg-white cursor-pointer border border-neutral-dim active:bg-primary-subtle-darker transition-colors'
-                          } ${checked && 'bg-primary-subtle border-primary-bold'}`}
+                          className={`relative rounded-lg p-3 flex 
+                              'bg-white cursor-pointer border border-neutral-dim active:bg-primary-subtle-darker transition-colors'
+                          ${checked && 'bg-primary-subtle border-primary-bold'}`}
                         >
                           <div className="flex flex-grow space-x-3">
-                            {acc.disabled ? (
-                              // Icon: lock-closed (outline)
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="w-6 h-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                />
-                              </svg>
-                            ) : (
-                              // Radio circle
                               <span
                                 className={`flex items-center justify-center w-6 h-6 rounded-full bg-white border-2  ${
                                   checked ? 'border-primary-bold' : 'border-neutral-dim-darker'
@@ -128,7 +103,6 @@ export function AccountVerificationFormStep4SelectAccount() {
                               >
                                 {checked && <span className={`w-2 h-2 rounded-full bg-primary-bold`} />}
                               </span>
-                            )}
 
                             <div className="flex-grow space-y-2">
                               <RadioGroup.Label as="p" className="font-medium">

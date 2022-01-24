@@ -59,7 +59,7 @@ export function AccountVerificationFormStep5Summary() {
           {/* STEP DESCRIPTION */}
           {/* PRODUCT-COPY: Re-iterate the value exchange to the user. */}
           <StepDescription>
-            We have verified the details of the bank account below, and you&rsquo;re good to go.
+            Below is the account you&apos;ve chosen to track.
           </StepDescription>
         </div>
 
