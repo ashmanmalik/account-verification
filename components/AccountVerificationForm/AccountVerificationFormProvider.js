@@ -1,5 +1,6 @@
 import toast from 'react-hot-toast';
 import { useEffect, useState, createContext, useContext } from 'react';
+import { getClientToken } from '../../clientAuthentication';
 import { useRouter } from 'next/router';
 import { axios } from '../../utils/axios';
 import { FORM_COMPONENTS } from './AccountVerificationForm';
@@ -33,6 +34,8 @@ const AccountVerificationFormContext = createContext({
   reset: undefined,
   // Function to be called when the user has successfully finished all steps
   hasCompletedForm: undefined,
+  // Function to redirect user to Basiq Consent UI
+  goToConsent: undefined
 });
 
 // This custom hook gives components access the `AccountVerificationFormContext` form context
@@ -72,6 +75,7 @@ export function AccountVerificationFormProvider({ children }) {
     setCurrentStep(0);
     setCancelling(false);
     setHasCompletedForm(false);
+    sessionStorage.clear()
   }
 
   // State for managing cancelling the account verification form
@@ -86,6 +90,7 @@ export function AccountVerificationFormProvider({ children }) {
     try {
       await deleteBasiqConnection();
       router.push('/');
+      sessionStorage.clear()
       resetState();
     } catch {
       // If something went wrong while deleting the basiq connection, we send the user to the home page via a full page refresh so all state is reset
@@ -96,7 +101,15 @@ export function AccountVerificationFormProvider({ children }) {
   // Called when the user has successfully finished all steps
   function finish() {
     setHasCompletedForm(true);
+    sessionStorage.clear()
     router.push('/');
+  }
+
+  // Go to external Basiq Consent UI
+  async function goToConsent () {
+    let userId = sessionStorage.getItem("userId")
+    const token = await getClientToken();
+    window.location = (`https://consent.basiq.io/home?userId=${userId}&token=${token}`);
   }
 
   const contextValue = {
@@ -114,6 +127,7 @@ export function AccountVerificationFormProvider({ children }) {
     basiqConnection,
     reset: resetState,
     hasCompletedForm,
+    goToConsent
   };
 
   return (

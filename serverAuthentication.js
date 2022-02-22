@@ -39,7 +39,7 @@ async function getNewServerToken() {
     headers: {
       Authorization: `Basic ${process.env.BASIQ_API_KEY}`,
       'Content-Type': 'application/x-www-form-urlencoded',
-      'basiq-version': '2.0',
+      'basiq-version': '3.0',
     },
   });
   return data.access_token;
@@ -50,7 +50,7 @@ export async function getNewClientToken() {
     headers: {
       Authorization: `Basic ${process.env.BASIQ_API_KEY}`,
       'Content-Type': 'application/x-www-form-urlencoded',
-      'basiq-version': '2.0',
+      'basiq-version': '3.0',
     },
   });
   return data.access_token;

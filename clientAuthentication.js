@@ -19,7 +19,7 @@ export async function getBasiqAuthorizationHeader() {
   return `Bearer ${token}`;
 }
 
-async function getClientToken() {
+export async function getClientToken() {
   let token = getClientTokenFromLocalStorage();
   const refreshDate = getClientTokenRefreshDateFromLocalStorage() || 0;
 
