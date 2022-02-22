@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import { useEffect, useState, createContext, useContext } from 'react';
-import { getClientToken } from '../../clientAuthentication';
 import { useRouter } from 'next/router';
+import { getClientToken } from '../../clientAuthentication';
 import { axios } from '../../utils/axios';
 import { FORM_COMPONENTS } from './AccountVerificationForm';
 
