@@ -68,8 +68,8 @@ export function AccountVerificationFormStep4SelectAccount() {
         ) : errorOrNoData ? (
           <ErrorScene
             title="Failed to load accounts"
-            message="Something went wrong whilst loading the list of accounts. If the problem persists, please contact support."
-            actionOnClick={refetch}
+            message="There was an error fetching your accounts, please retry the connection."
+            actionOnClick={(() => goToConsent("connect"))}
           />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
@@ -156,7 +156,7 @@ export function AccountVerificationFormStep4SelectAccount() {
               <Button type="submit" block>
                 Finish
               </Button>
-              <Button type="button" variant="subtle" block onClick={goToConsent}>
+              <Button type="button" variant="subtle" block onClick={(() => goToConsent("update"))}>
                 Connect to a different bank
               </Button>
             </div>

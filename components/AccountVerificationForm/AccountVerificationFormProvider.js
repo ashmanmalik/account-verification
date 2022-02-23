@@ -105,11 +105,11 @@ export function AccountVerificationFormProvider({ children }) {
     router.push('/');
   }
 
-  // Go to external Basiq Consent UI
-  async function goToConsent () {
+  // Redirect to the external Basiq Consent UI
+  async function goToConsent(action) {
     let userId = sessionStorage.getItem("userId")
     const token = await getClientToken();
-    window.location = (`https://consent.basiq.io/home?userId=${userId}&token=${token}`);
+    window.location = (`https://consent.basiq.io/home?userId=${userId}&token=${token}&action=${action}`);
   }
 
   const contextValue = {

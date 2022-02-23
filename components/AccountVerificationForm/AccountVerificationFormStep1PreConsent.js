@@ -169,7 +169,7 @@ export function AccountVerificationFormStep1PreConsent() {
 
         {/* ACTIONS */}
         <div className="space-y-2">
-          <Button variant="bold" block onClick={goToConsent}>
+          <Button variant="bold" block onClick={(() => goToConsent("connect"))}>
             Continue
           </Button>
 
@@ -182,7 +182,7 @@ export function AccountVerificationFormStep1PreConsent() {
         <AccountVerificationFormLearnMoreModal
           isOpen={isLearnMoreModalOpen}
           onClose={closeLearnMoreModal}
-          onConfirm={goToConsent}
+          onConfirm={(() => goToConsent("connect"))}
         />
       </div>
     </div>
