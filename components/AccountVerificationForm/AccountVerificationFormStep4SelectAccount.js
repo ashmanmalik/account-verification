@@ -56,7 +56,7 @@ export function AccountVerificationFormStep4SelectAccount() {
           {/* PRODUCT-COPY: Depending on what account features your product supports. */}
           {(loading || !errorOrNoData) && (
             <StepDescription>
-              Please select an account that allows direct debits. Many banks only allow withdrawals from transaction
+              Please select an account that will allow direct debits. Many banks only allow withdrawals from transaction
               accounts.
             </StepDescription>
           )}
