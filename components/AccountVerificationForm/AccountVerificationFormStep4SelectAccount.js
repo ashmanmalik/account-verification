@@ -18,7 +18,7 @@ export function AccountVerificationFormStep4SelectAccount() {
   const [selectedAccount, setSelectedAccount] = useState();
   const [validationError, setValidationError] = useState(false);
 
-  const { data, error, loading, refetch } = useAccountsData({
+  const { data, error, loading } = useAccountsData({
     userId: userId,
   });
 
