@@ -26,8 +26,6 @@ const AccountVerificationFormContext = createContext({
   accountVerificationFormState: undefined,
   // Function to update the verification form state
   updateAccountVerificationFormState: undefined,
-  // Function to create a secure connection to the basiq API.
-  createBasiqConnection: undefined,
   // The state of the secure connection to the basiq API. See `useBasiqConnection`
   basiqConnection: undefined,
   // Function to reset the state of the form
@@ -64,7 +62,7 @@ export function AccountVerificationFormProvider({ children }) {
   const goForward = () => setCurrentStep(step => (step === totalSteps - 1 ? totalSteps - 1 : currentStep + 1));
 
   // State for managing the basiq connection
-  const { createBasiqConnection, basiqConnection, deleteBasiqConnection } = useBasiqConnection({
+  const { basiqConnection, deleteBasiqConnection } = useBasiqConnection({
     currentStep,
     userId: accountVerificationFormState.user?.id,
     selectedInstitution: accountVerificationFormState.selectedInstitution,
@@ -166,15 +164,6 @@ function useBasiqConnection({ currentStep, userId, selectedInstitution }) {
     ? selectedInstitution.stats.averageDurationMs.verifyCredentials +
       selectedInstitution.stats.averageDurationMs.retrieveAccounts
     : undefined;
-
-  async function createBasiqConnection(data) {
-    if (!userId) return;
-    const jobId = await createConnection({ data, userId });
-    setInProgress(true);
-    // Optimisic UI. We know the first job basiq will process will always be "verify-credentials"
-    setStepNameInProgress('verify-credentials');
-    setJobId(jobId);
-  }
 
   async function deleteBasiqConnection() {
     if (!jobId || !userId) return;
