@@ -123,7 +123,7 @@ export function AccountVerificationFormProvider({ children }) {
     finish,
     accountVerificationFormState,
     updateAccountVerificationFormState,
-    createBasiqConnection,
+    getUserConsent,
     basiqConnection,
     reset: resetState,
     hasCompletedForm,
@@ -299,7 +299,7 @@ function useBasiqConnection({ currentStep, userId, selectedInstitution }) {
       completed,
       reset: resetState,
     },
-    createBasiqConnection,
+    getUserConsent,
     deleteBasiqConnection,
   };
 }
@@ -317,9 +317,9 @@ function newStepError({ detail, title }) {
 // IMPORTANT: Under no circumstance should you store your customers credentials anywhere in your application
 // https://api.basiq.io/reference/create-a-connection
 // https://api.basiq.io/reference/jobs
-async function createConnection({ userId, data }) {
-  const response = await axios.post(`https://au-api.basiq.io/users/${userId}/connections`, data);
-  return response.data.id;
+async function getUserConsent(userId) {
+  const response = await axios.get(`https://au-api.basiq.io/users/${userId}/consents`);
+  return response.data;
 }
 
 // Permanently deletes a connection with the Basiq API

@@ -11,7 +11,7 @@ import { StepHeading } from './StepHeading';
 import { StepDescription } from './StepDescription';
 
 export function AccountVerificationFormStep4SelectAccount() {
-  const { goForward, updateAccountVerificationFormState, goToConsent } = useAccountVerificationForm();
+  const { goForward, updateAccountVerificationFormState, goToConsent, getUserConsent } = useAccountVerificationForm();
 
   const userId = sessionStorage.getItem("userId");
 
@@ -32,6 +32,15 @@ export function AccountVerificationFormStep4SelectAccount() {
     } else {
       setValidationError(true);
       window.scrollTo(0, 0);
+    }
+  }
+
+  async function retryConnection() {
+    try {
+      await getUserConsent(userId)
+      goToConsent("connect")
+    } catch {
+      goToConsent()
     }
   }
 
@@ -69,7 +78,7 @@ export function AccountVerificationFormStep4SelectAccount() {
           <ErrorScene
             title="Failed to load accounts"
             message="There was an error fetching your accounts, please retry the connection."
-            actionOnClick={(() => goToConsent("connect"))}
+            actionOnClick={(() => retryConnection())}
           />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
@@ -156,8 +165,8 @@ export function AccountVerificationFormStep4SelectAccount() {
               <Button type="submit" block>
                 Finish
               </Button>
-              <Button type="button" variant="subtle" block onClick={(() => goToConsent("update"))}>
-                Connect to a different bank
+              <Button type="button" variant="subtle" block onClick={(() => goToConsent("connect"))}>
+                Connect a different account
               </Button>
             </div>
           </form>
