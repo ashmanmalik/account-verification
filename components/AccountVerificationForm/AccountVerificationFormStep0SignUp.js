@@ -18,7 +18,7 @@ export function AccountVerificationFormStep0SignUp() {
   // Check for a current user session and if they have been directed from the consent UI & orward them to the account selection step
   useEffect(() => {
     // document.referrer will be null if directed to a page using http, so skip that check for development
-    if (!process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       sessionStorage.getItem("userId") ? goToStep(2) : null
     } else {
       sessionStorage.getItem("userId") && document.referrer === "https://consent.basiq.io/" ? goToStep(2) : null  }
