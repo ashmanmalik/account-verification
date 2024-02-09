@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useTernaryState } from '../../utils/useTernaryState';
 import { Button } from '../Button';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { AccountVerificationFormLearnMoreModal } from './AccountVerificationFormLearnMoreModal';
 import { StepLogo } from './StepLogo';
 import { StepHeading } from './StepHeading';
 import { StepDescription } from './StepDescription';
 import { useAccountVerificationForm } from './AccountVerificationFormProvider';
-import { LoadingSpinner } from '../../components/LoadingSpinner';
 
 export function AccountVerificationFormStep1PreConsent() {
   const { goToConsent } = useAccountVerificationForm()
