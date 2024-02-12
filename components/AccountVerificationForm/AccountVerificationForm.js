@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { useTernaryState } from '../../utils/useTernaryState';
 import { ProgressBar } from '../ProgressBar';
 import { AccountVerificationFormStep0SignUp } from './AccountVerificationFormStep0SignUp';
@@ -301,6 +302,7 @@ export function AccountVerificationForm() {
         onConfirm={cancel}
         cancelling={cancelling}
       />
+      <Analytics />
     </>
   );
 }
