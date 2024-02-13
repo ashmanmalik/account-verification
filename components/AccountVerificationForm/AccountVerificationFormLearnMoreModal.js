@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Modal, ModalTitle } from '../Modal';
 import { useAccountVerificationForm } from './AccountVerificationFormProvider';
 
-export function AccountVerificationFormLearnMoreModal({ isOpen, onClose, onConfirm }) {
+export function AccountVerificationFormLearnMoreModal({ isOpen, onClose }) {
   const connectButtonRef = useRef(null);
   const [submitting, setSubmitting] = useState(false); 
   const { goToConsent } = useAccountVerificationForm()
