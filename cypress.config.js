@@ -1,8 +1,10 @@
 // cypress.config.js
-module.exports = {
+const { defineConfig } = require('cypress');
+
+module.exports = defineConfig({
   e2e: {
-    supportFile: 'cypress/integration/app.spec.js',
-    specPattern: 'cypress/integration/**/*.js', // Adjust this to match your file structure
     baseUrl: 'http://localhost:3000',
+    supportFile: 'cypress/support/e2e.js',
+    specPattern: 'cypress/e2e/**/*.js', // Adjust if your specs are in a different directory
   },
-};
+});

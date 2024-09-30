@@ -5,8 +5,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run"
+    "cypress": "cypress open --config-file=cypress.config.js",
+    "cypress:run": "cypress run --config-file=cypress.config.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
