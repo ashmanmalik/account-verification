@@ -11,7 +11,8 @@ export function AccountVerificationFormStep3LoadingSteps() {
   const [isResumeModalOpen, openResumeModal, closeResumeModal] = useTernaryState(false);
 
   const { basiqConnection, goForward } = useAccountVerificationForm();
-  const { error, progress, completed, stepNameInProgress, reset, setJobId } = basiqConnection;
+  const { error, completed, stepNameInProgress, reset, setJobId } = basiqConnection;
+  const [progress, setProgress] = useState(0);
 
     useEffect(() => {
       const newJobId = new URLSearchParams(window.location.search).get("jobIds");
