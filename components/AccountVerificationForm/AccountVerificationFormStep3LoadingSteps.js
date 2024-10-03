@@ -28,6 +28,7 @@ export function AccountVerificationFormStep3LoadingSteps() {
 
       if (uuids && uuids.length > 0) {
         const firstUUID = uuids[0];
+        setProgress(100);
         setJobId(firstUUID);
       } else {
         setProgress(100);
@@ -43,6 +44,7 @@ export function AccountVerificationFormStep3LoadingSteps() {
 
       if (uuids && uuids.length > 0) {
         const firstUUID = uuids[0];
+        setProgress(100);
         setJobId(firstUUID);
       } else {
         setProgress(100);
