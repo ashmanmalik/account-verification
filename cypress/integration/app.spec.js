@@ -11,7 +11,7 @@ describe('Index page', () => {
 describe('Account verification form', () => {
   beforeEach(() => {
     // Setup cypress server to route API responses and to change the behavior of network requests
-    cy.server();
+    cy.intercept()
     cy.route('/api/**').as('api');
     cy.route('https://au-api.basiq.io/**').as('basiqApi');
   });
