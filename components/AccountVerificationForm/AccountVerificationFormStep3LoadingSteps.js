@@ -15,7 +15,6 @@ export function AccountVerificationFormStep3LoadingSteps() {
 
     useEffect(() => {
       const newJobId = new URLSearchParams(window.location.search).get("jobIds");
-      console.log(newJobId); 
       // Regular expression to match UUIDs separated by commas
       if (newJobId) {
           // Regular expression to match UUIDs separated by commas
@@ -27,10 +26,10 @@ export function AccountVerificationFormStep3LoadingSteps() {
           if (uuids && uuids.length > 0) {
               // Extracting the first UUID
               const firstUUID = uuids[0];
-              console.log(firstUUID); // Output: ff48fe10-4882-4008-b7b6-b4856d2459e5
               setJobId(firstUUID);
           } else {
-              console.log("No UUID found in the string.");
+            setProgress(100);
+            setJobId(newJobId);
           }
       } else {
           console.log("The newJobId variable is null or undefined.");
@@ -45,7 +44,7 @@ export function AccountVerificationFormStep3LoadingSteps() {
         {error ? (
           <div className="w-full space-y-8">
             <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">{error?.name}</h2>
+              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">{error?.response?.data.data[0].detail}</h2>
               <p className="text-sm sm:text-base text-neutral-muted-darker">{error?.message}</p>
             </div>
             <Button block onClick={reset}>

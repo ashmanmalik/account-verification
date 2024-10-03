@@ -14,9 +14,8 @@ export function ToastNotification() {
         <Transition
           appear
           show={t.visible}
-          className={`flex space-x-3 rounded-lg text-black p-3 shadow-lg border-l-8 ${
-            APPEARANCE_MAP[t.appearance]
-          } transform`}
+          className={`flex space-x-3 rounded-lg text-black p-3 shadow-lg border-l-8 ${APPEARANCE_MAP[t.appearance]
+            } transform`}
           enter="transition-all duration-150"
           enterFrom="opacity-0 scale-50"
           enterTo="opacity-100 scale-100"
@@ -57,7 +56,11 @@ export function ToastNotification() {
 
           {/* Toast content */}
           <div className="flex flex-col flex-grow space-y-1">
-            {t.title && <span className="font-medium leading-normal">{resolveValue(t.title)}</span>}
+            {t.type && (
+              <span className="font-medium leading-normal">
+                {resolveValue(t.type.charAt(0).toUpperCase() + t.type.slice(1))}
+              </span>
+            )}
             {t.message && <span className="text-sm">{resolveValue(t.message)}</span>}
           </div>
 

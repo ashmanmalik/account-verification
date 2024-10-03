@@ -15,7 +15,7 @@ describe('Account verification form', () => {
     cy.route('/api/**').as('api');
     cy.route('https://au-api.basiq.io/**').as('basiqApi');
   });
-/*
+
   it('Completes step 0 - SignUp', () => {
     // Start from the "/account-verification" page
     cy.visit('http://localhost:3000/account-verification');
@@ -26,7 +26,7 @@ describe('Account verification form', () => {
     // Submit the form
     cy.get('button[type="submit"]').click();
   });
-
+/*
   it('Completes step 1 - PreConsent', () => {
     // Check the step number
     cy.get('[data-cy="current-step"]').contains('2');
@@ -81,5 +81,5 @@ describe('Account verification form', () => {
     // Make sure we have a button which shows "View verified account"
     cy.contains('View verified account').should('be.visible');
   });
-  */
+*/
 });

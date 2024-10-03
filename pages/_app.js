@@ -8,7 +8,6 @@ export default function MyApp({ Component, pageProps }) {
       <AccountVerificationFormProvider>
         <Component {...pageProps} />
       </AccountVerificationFormProvider>
-
       <ToastNotification />
     </>
   );
